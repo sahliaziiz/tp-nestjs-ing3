@@ -1,1 +1,5 @@
-export class Travel {}
+export class Travel {
+    id: number;
+    nom: string;
+    price: number;
+}
