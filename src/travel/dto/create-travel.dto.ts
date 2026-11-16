@@ -1,6 +1,6 @@
 import { IsInt, IsNotEmpty, IsString, Min, MinLength } from "class-validator";
 import { ApiProperty} from "@nestjs/swagger";
-export class CreateVoitureDto {
+export class CreateTravelDto {
   @ApiProperty({ example: "to china" })
   @IsString()
   @IsNotEmpty()

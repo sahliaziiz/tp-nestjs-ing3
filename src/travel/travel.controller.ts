@@ -1,15 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
 import { TravelService } from './travel.service.js';
 import { CreateTravelDto } from './dto/create-travel.dto.js';
-import { UpdateTravelDto } from './dto/update-travel.dto.js';
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags("travel")
 @Controller('travel')
 export class TravelController {
-  constructor(private readonly travelService: TravelService) {}
+  constructor(private readonly voituresService: travelService) {}
 
   @Post()
-  create(@Body() createTravelDto: CreateTravelDto) {
-    return this.travelService.create(createTravelDto);
+  create(@Body() dto: CreatetravelDto) {
+    return this.travelsService.create(dto);
   }
 
   @Get()
@@ -17,18 +18,21 @@ export class TravelController {
     return this.travelService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.travelService.findOne(+id);
+  @Get(":id")
+  findOne(@Param("id", ParseIntPipe) id: number) {
+    return this.voituresService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTravelDto: UpdateTravelDto) {
-    return this.travelService.update(+id, updateTravelDto);
-  }
+
 
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.travelService.remove(+id);
   }
 }
+
+
+
+
+
+  
